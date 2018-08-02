@@ -13,10 +13,15 @@ class ToDoList extends Component {
             jobsList:jobs
         }
     }
-    
+    removeJob = (index) => {
+        jobs.splice(index,1);
+        this.setState({
+            jobsList:jobs
+        })
+    }
 
     insertJob = (a) => {
-        if(a.trim()!=''){
+        if(a.trim()!==''){
             jobs.push(a);
             this.setState({
                 jobsList:jobs
@@ -28,14 +33,17 @@ class ToDoList extends Component {
         return (
             this.state.jobsList.map(
                 (item, index) => {
-                    return <ListItem key={index} value={index} jobName={item}/>
+                    return <ListItem key={index} 
+                    removeItem = { this.removeJob }
+                     value={index} jobName={item}/>
                 }
             )
         )
     }
     render() {
         return (
-            <div>
+            <div className='w-75 mx-auto mt-5'>
+            <h2 className='text-center mb-3 text-uppercase'>To do list</h2>
                 <AddJob getJob={ this.insertJob }/>
                 {this.renderJobsList()}   
             </div>
