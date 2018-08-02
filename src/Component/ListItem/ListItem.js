@@ -16,6 +16,12 @@ export default class ListItem extends Component {
         });
     }
 
+    removeJob = () => {
+        this.setState({
+            success:'bg-secondary text-white',
+            display:''
+        })
+    }
     render() {
         return (
             <div>
@@ -33,7 +39,11 @@ export default class ListItem extends Component {
                                 <i className="fas fa-check" />
                             </button>
                             <button type="button" className="btn btn-danger"
-                            onClick={ () => this.props.removeItem(this.props.value) }
+                            onClick={ () => 
+                                {
+                                    this.props.removeItem(this.props.value)
+                                                              } 
+                                                            }
                             >
                                 <i className="fas fa-times" />
                             </button>

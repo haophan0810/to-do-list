@@ -14,7 +14,8 @@ class ToDoList extends Component {
         }
     }
     removeJob = (index) => {
-        jobs.splice(index,1);
+        delete jobs[index];
+        // jobs.splice(index,1);
         this.setState({
             jobsList:jobs
         })
